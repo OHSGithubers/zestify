@@ -1,0 +1,2 @@
+# zestify
+Stonk predictions

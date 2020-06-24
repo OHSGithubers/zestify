@@ -3,11 +3,12 @@ from pandas_datareader import data as pdr
 from datetime import date
 import datetime
 import yfinance as yf
+import sys
 yf.pdr_override()
 import pandas.testing
 
 # Getting Data
-ticker = input('Enter the stock you wish to analyze:')
+ticker = sys.argv[1]
 today = date.today()
 today = today + datetime.timedelta(days=1)
 start_date="2010-01-01"

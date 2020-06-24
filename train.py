@@ -27,12 +27,15 @@ model = keras.models.Sequential([
     keras.layers.Dense(1)
 ])
 
+# Model checkpoints
+checkpoints = keras.callbacks.ModelCheckpoint("checkpoint_model.h5")
+
 opt = keras.optimizers.Adam(lr=1e-3, decay=1e-5)
 
 print(model.summary())
 
 model.compile(optimizer=opt, loss="mse")
 
-history = model.fit(X_train, y_train, epochs=500)
+history = model.fit(X_train, y_train, epochs=500, callbacks=[checkpoints])
 
 model.evaluate(X_test, y_test)

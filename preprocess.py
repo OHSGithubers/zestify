@@ -69,7 +69,7 @@ sequence_data = extract_sequences(processed_data)
 
 # Derive result data
 X_data = sequence_data
-y_data = stock_data["Close"].values[50:]
+y_data = stock_data["Close"].values[50:].T
 
 # Save data
 with open("processed_stonk_data", "wb") as f:

@@ -12,8 +12,9 @@ with open("processed_stonk_data", "rb") as f:
     X_data, y_data = pickle.load(f)
 
 # Split data
-X_train, y_train = X_data[:10], y_data[:10]
-X_test, y_test = X_data[10:], y_data[10:]
+X_train, y_train = X_data[:-10], y_data[:-10]
+X_test, y_test = X_data[-10:], y_data[-10:]
+
 
 # Build model and run
 model = keras.models.Sequential([

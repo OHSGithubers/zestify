@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
+import pickle
 
 
 # Extract percent data
@@ -69,3 +70,7 @@ sequence_data = extract_sequences(processed_data)
 # Derive result data
 X_data = sequence_data
 y_data = stock_data["Close"].values[50:]
+
+# Save data
+with open("processed_stonk_data", "wb") as f:
+    pickle.dump((X_data, y_data), f)

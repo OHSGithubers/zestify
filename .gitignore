@@ -1,2 +1,3 @@
 **/*.csv
 processed_stonk_data
+checkpoint_model.h5

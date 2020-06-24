@@ -45,3 +45,27 @@ processed_data = scaler.fit_transform(stock_data.drop("Close", axis=1).values)
 
 # Add raw Close data back to dataset for sequencing
 processed_data = np.column_stack((processed_data, stock_data["Close"].values))
+
+# Sequence extractor
+def extract_sequences(data, step_days=50):
+    # Empty sequence list
+    sequences = []
+
+    # Loop array and step
+    for i in range(len(data)):
+        # Check for end of window and array
+        if i + step_days + 1 > len(data):
+            break
+
+        # Add sequence
+        sequences.append(data[i:i+step_days])
+
+    # Return sequences
+    return np.asarray(sequences)
+
+# Extract sequences
+sequence_data = extract_sequences(processed_data)
+
+# Derive result data
+X_data = sequence_data
+y_data = stock_data["Close"].values[50:]

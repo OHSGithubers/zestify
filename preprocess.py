@@ -70,6 +70,7 @@ sequence_data = extract_sequences(processed_data)
 # Derive result data
 X_data = sequence_data
 y_data = stock_data["Close"].values[50:].T
+# print("X=%s,  y=%s " % (X_data[0], y_data[0]))
 
 # Save data
 with open("processed_stonk_data", "wb") as f:
